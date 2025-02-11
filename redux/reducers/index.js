@@ -1,7 +1,8 @@
-import { GET_SINGLE_COCKTAIL } from '../action/index'
+import { GET_SEARCH_BY_NAME, GET_SINGLE_COCKTAIL } from '../action/index'
 
 const initialState = {
   singleCocktail: null,
+  content: [],
 }
 
 const cocktailReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const cocktailReducer = (state = initialState, action) => {
       return {
         ...state,
         singleCocktail: action.payload,
+      }
+    case GET_SEARCH_BY_NAME:
+      return {
+        ...state,
+        content: action.payload.drinks || [],
       }
     default:
       return state
