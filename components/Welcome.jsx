@@ -9,10 +9,15 @@ const Welcome = () => {
           The one-stop to find amazing drinks mixes for any occasion.
         </Text>
       </View>
-      <View>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require('../assets/splash.png')}
+          style={styles.splashImage}
+          alt="glass"
+        />
         <Image
           source={require('../assets/glass.png')}
-          style={{ width: '80%', height: '80%' }}
+          style={styles.glassImage}
           alt="glass"
         />
       </View>
@@ -37,6 +42,24 @@ const styles = StyleSheet.create({
   text3: {
     fontSize: 16,
     fontFamily: 'Raleway-Regular',
+  },
+  glassImage: {
+    height: 532,
+    width: 302,
+    position: 'absolute',
+    left: 50,
+    top: -50,
+  },
+  splashImage: {
+    height: 532,
+    width: 450,
+    position: 'absolute',
+
+    top: -50,
+  },
+  imageContainer: {
+    width: '100%',
+    height: '100%',
   },
 })
 

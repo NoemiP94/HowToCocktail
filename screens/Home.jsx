@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import { Searchbar, Appbar } from 'react-native-paper'
 import { useEffect, useState } from 'react'
 import { useFonts } from 'expo-font'
@@ -47,7 +47,13 @@ const Home = () => {
             <CustomText style={styles.appbarTitle}>How to Cocktail</CustomText>
           }
         />
+        <Image
+          source={require('../assets/mint.png')}
+          style={styles.mintImage}
+          alt="glass"
+        />
       </Appbar.Header>
+      <Text style={styles.searchbarTopText}>I want to learn...</Text>
       <Searchbar
         placeholder="Search"
         onChangeText={(text) => setQuery(text)}
@@ -84,6 +90,22 @@ const styles = StyleSheet.create({
     color: '#F66372',
     fontSize: 40,
     textAlign: 'center',
+    zIndex: 10,
+  },
+  mintImage: {
+    width: '150',
+    height: '140',
+    position: 'absolute',
+    right: 0,
+    top: -34,
+    zIndex: 5,
+  },
+  searchbarTopText: {
+    fontSize: 25,
+    color: '#1E2742',
+    fontFamily: 'Raleway-Bold',
+    marginLeft: 35,
+    marginBottom: 10,
   },
 })
 
