@@ -9,6 +9,7 @@ import Welcome from '../components/Welcome'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleCocktail, searchByName } from '../redux/action'
+import SearchResults from '../components/SearchResults'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -64,6 +65,7 @@ const Home = () => {
         {content && content.length > 0 ? (
           content.map((drink, index) => (
             <View key={drink.idDrink || index} style={{ margin: 10 }}>
+              {/* <SearchResults drink={drink} /> */}
               <Text>{drink.idDrink}</Text>
               <Text>{drink.strDrink}</Text>
             </View>
