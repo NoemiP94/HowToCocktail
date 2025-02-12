@@ -1,8 +1,11 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { Searchbar, Appbar } from 'react-native-paper'
 import { useEffect, useState } from 'react'
+import { useFonts } from 'expo-font'
 
-import SingleCocktail from '../components/SingleCocktail'
+// import SingleCocktail from '../components/SingleCocktail'
+import CustomText from '../components/CustomText'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleCocktail, searchByName } from '../redux/action'
 
@@ -18,20 +21,34 @@ const Home = () => {
     } else {
       dispatch(getSingleCocktail())
     }
+
+    console.log('Font loaded:', fontLoaded)
+    console.log('Font error:', fontError)
   }, [dispatch, query])
 
+  //font
+  const [fontLoaded, fontError] = useFonts({
+    'MeowScript-Regular': require('../assets/fonts/MeowScript-Regular.ttf'),
+  })
+
+  if (!fontLoaded && !fontError) {
+    return null
+  }
   return (
     <View>
-      <Appbar.Header>
+      <Appbar.Header style={styles.appbar}>
         {/* <Appbar.BackAction onPress={() => {}} /> */}
-        <Appbar.Content title="How to Cocktail" />
-        <Appbar.Action icon="calendar" onPress={() => {}} />
-        <Appbar.Action icon="magnify" onPress={() => {}} />
+        <Appbar.Content
+          title={
+            <CustomText style={styles.appbarTitle}>How to Cocktail</CustomText>
+          }
+        />
       </Appbar.Header>
       <Searchbar
         placeholder="Search"
         onChangeText={(text) => setQuery(text)}
         value={query}
+        style={styles.searchbar}
       />
       <View>
         {content && content.length > 0 ? (
@@ -49,5 +66,21 @@ const Home = () => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  appbar: {
+    backgroundColor: '#FEF9E4',
+  },
+  searchbar: {
+    marginHorizontal: 20,
+    backgroundColor: 'white',
+  },
+  appbarTitle: {
+    fontFamily: 'MeowScript-Regular',
+    color: '#F66372',
+    fontSize: 40,
+    textAlign: 'center',
+  },
+})
 
 export default Home
