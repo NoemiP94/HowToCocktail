@@ -28,7 +28,12 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/MeowScript-Regular.ttf"]
+          "fonts": [
+            "./assets/fonts/MeowScript-Regular.ttf",
+            "./assets/fonts/Raleway-Regular.ttf",
+            "./assets/fonts/Raleway-Bold.ttf",
+            "./assets/fonts/Raleway-Italic-VariableFont_wght.ttf"
+          ]
  
         }
       ]

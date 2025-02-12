@@ -5,6 +5,7 @@ import { useFonts } from 'expo-font'
 
 // import SingleCocktail from '../components/SingleCocktail'
 import CustomText from '../components/CustomText'
+import Welcome from '../components/Welcome'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleCocktail, searchByName } from '../redux/action'
@@ -29,6 +30,9 @@ const Home = () => {
   //font
   const [fontLoaded, fontError] = useFonts({
     'MeowScript-Regular': require('../assets/fonts/MeowScript-Regular.ttf'),
+    'Raleway-Italic-VariableFont_wght': require('../assets/fonts/Raleway-Italic-VariableFont_wght.ttf'),
+    'Raleway-Regular': require('../assets/fonts/Raleway-Regular.ttf'),
+    'Raleway-Bold': require('../assets/fonts/Raleway-Bold.ttf'),
   })
 
   if (!fontLoaded && !fontError) {
@@ -59,7 +63,7 @@ const Home = () => {
             </View>
           ))
         ) : (
-          <Text>No cocktails found</Text>
+          <Welcome />
         )}
       </View>
       {/* <SingleCocktail /> */}
