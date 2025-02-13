@@ -23,9 +23,6 @@ const Home = () => {
     } else {
       dispatch(getSingleCocktail())
     }
-
-    console.log('Font loaded:', fontLoaded)
-    console.log('Font error:', fontError)
   }, [dispatch, query])
 
   //font
@@ -65,9 +62,9 @@ const Home = () => {
         {content && content.length > 0 ? (
           content.map((drink, index) => (
             <View key={drink.idDrink || index} style={{ margin: 10 }}>
-              {/* <SearchResults drink={drink} /> */}
-              <Text>{drink.idDrink}</Text>
-              <Text>{drink.strDrink}</Text>
+              <SearchResults drink={drink} />
+              {/* <Text>{drink.idDrink}</Text>
+              <Text>{drink.strDrink}</Text> */}
             </View>
           ))
         ) : (

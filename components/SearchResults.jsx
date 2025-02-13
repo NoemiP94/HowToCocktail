@@ -1,11 +1,22 @@
+import { useEffect, useState } from 'react'
 import { View, Text } from 'react-native'
 
-const SearchResults = (drink) => {
+const SearchResults = ({ drink }) => {
+  const [result, setResults] = useState('')
+  useEffect(() => {
+    setResults(drink)
+    // console.log('result', result)
+  }, [drink])
+
   return (
-    <View>
-      <Text>{drink.idDrink}</Text>
-      <Text>{drink.strDrink}</Text>
-    </View>
+    <>
+      {result ? (
+        <View key={result.idDrink}>
+          <Text>{result.idDrink}</Text>
+          <Text>{result.strDrink}</Text>
+        </View>
+      ) : null}
+    </>
   )
 }
 

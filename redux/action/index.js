@@ -15,7 +15,7 @@ export const getSingleCocktail = () => {
 
       if (res.ok) {
         const data = await res.json()
-        console.log(data)
+        // console.log(data)
         dispatch({
           type: GET_SINGLE_COCKTAIL,
           payload: data,
@@ -38,7 +38,7 @@ export const searchByName = (query) => {
       )
       if (res.ok) {
         const data = await res.json()
-        console.log(data)
+        // console.log(data)
         dispatch({
           type: GET_SEARCH_BY_NAME,
           payload: data,
