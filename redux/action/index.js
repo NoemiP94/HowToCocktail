@@ -1,5 +1,6 @@
 export const GET_SINGLE_COCKTAIL = 'GET_SINGLE_COCKTAIL'
 export const GET_SEARCH_BY_NAME = 'GET_SEARCH_BY_NAME'
+export const GET_CATEGORIES = 'GET_CATEGORIES'
 
 export const getSingleCocktail = () => {
   return async (dispatch) => {
@@ -52,7 +53,30 @@ export const searchByName = (query) => {
   }
 }
 
+export const getCategories = () => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'
+      )
+      if (res.ok) {
+        const data = await res.json()
+
+        dispatch({
+          type: GET_CATEGORIES,
+          payload: data,
+        })
+      } else {
+        throw new Error('Get categories is failed')
+      }
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+}
+
 /*
 aggiungere filtro per categoria
 www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink
+
 */

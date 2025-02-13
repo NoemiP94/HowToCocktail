@@ -8,6 +8,7 @@ import Welcome from '../components/Welcome'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchByName } from '../redux/action'
 import SearchResults from '../components/SearchResults'
+import CategoryList from '../components/CategoryList'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -51,20 +52,27 @@ const Home = () => {
       {query === '' ? (
         <Welcome />
       ) : (
-        <ScrollView horizontal>
-          <View style={styles.resultContainer}>
-            {content &&
-              content.length > 0 &&
-              content.map((drink, index) => (
-                <View
-                  key={drink.idDrink || index}
-                  style={styles.drinkContainer}
-                >
-                  <SearchResults drink={drink} />
-                </View>
-              ))}
-          </View>
-        </ScrollView>
+        <View style={styles.contentBox}>
+          <ScrollView horizontal>
+            <View style={styles.resultContainer}>
+              {content &&
+                content.length > 0 &&
+                content.map((drink, index) => (
+                  <View
+                    key={drink.idDrink || index}
+                    style={styles.drinkContainer}
+                  >
+                    <SearchResults drink={drink} />
+                  </View>
+                ))}
+            </View>
+          </ScrollView>
+          <ScrollView>
+            <View style={styles.categoryBox}>
+              <CategoryList />
+            </View>
+          </ScrollView>
+        </View>
       )}
     </View>
   )
@@ -89,13 +97,21 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   resultContainer: {
-    margin: 10,
+    marginTop: 5,
     marginLeft: 20,
     display: 'flex',
     flexDirection: 'row',
+    marginBottom: 40,
   },
   drinkContainer: {
     marginRight: 30,
+  },
+  contentBox: {
+    margin: 5,
+    display: 'flex',
+  },
+  categoryBox: {
+    marginTop: 10,
   },
 })
 
