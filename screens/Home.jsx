@@ -47,19 +47,25 @@ const Home = () => {
         style={styles.searchbar}
         onIconPress={handleClear}
       />
-      <View>
-        {query === '' ? (
-          <Welcome />
-        ) : (
-          content &&
-          content.length > 0 &&
-          content.map((drink, index) => (
-            <View key={drink.idDrink || index} style={styles.resultContainer}>
-              <SearchResults drink={drink} />
-            </View>
-          ))
-        )}
-      </View>
+
+      {query === '' ? (
+        <Welcome />
+      ) : (
+        <ScrollView horizontal>
+          <View style={styles.resultContainer}>
+            {content &&
+              content.length > 0 &&
+              content.map((drink, index) => (
+                <View
+                  key={drink.idDrink || index}
+                  style={styles.drinkContainer}
+                >
+                  <SearchResults drink={drink} />
+                </View>
+              ))}
+          </View>
+        </ScrollView>
+      )}
     </View>
   )
 }
@@ -67,6 +73,8 @@ const Home = () => {
 const styles = StyleSheet.create({
   main: {
     backgroundColor: '#FEF9E4',
+    width: '100%',
+    height: '100%',
   },
   searchbar: {
     marginHorizontal: 20,
@@ -82,6 +90,12 @@ const styles = StyleSheet.create({
   },
   resultContainer: {
     margin: 10,
+    marginLeft: 20,
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  drinkContainer: {
+    marginRight: 30,
   },
 })
 
