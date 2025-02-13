@@ -82,10 +82,6 @@ const styles = StyleSheet.create({
   },
   resultContainer: {
     margin: 10,
-    display: 'flex',
-    flexWrap: 'nowrap',
-    flexDirection: 'row',
-    // justifyContent: 'space-evenly',
   },
 })
 

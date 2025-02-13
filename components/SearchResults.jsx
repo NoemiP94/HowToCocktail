@@ -12,7 +12,9 @@ const SearchResults = ({ drink }) => {
     <>
       {result ? (
         <View key={result.idDrink} style={styles.container}>
-          <Text style={styles.title}>{result.strDrink}</Text>
+          <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
+            {result.strDrink}
+          </Text>
           <Text style={styles.text}>{result.strCategory}</Text>
           <Text style={styles.text}>{result.strAlcoholic}</Text>
           <Image source={{ uri: result.strDrinkThumb }} style={styles.image} />
@@ -29,11 +31,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: 150,
     height: 100,
+    display: 'flex',
   },
   title: {
     color: 'white',
     fontFamily: 'Raleway-Bold',
     fontSize: 20,
+    zIndex: 10,
   },
   text: {
     color: 'white',
@@ -45,8 +49,8 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     position: 'absolute',
-    right: 2,
-    bottom: 2,
+    right: -10,
+    bottom: -5,
   },
 })
 
