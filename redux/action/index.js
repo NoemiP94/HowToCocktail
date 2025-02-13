@@ -51,3 +51,8 @@ export const searchByName = (query) => {
     }
   }
 }
+
+/*
+aggiungere filtro per categoria
+www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink
+*/

@@ -1,14 +1,12 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
-import { Searchbar, Appbar } from 'react-native-paper'
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
+import { Searchbar } from 'react-native-paper'
 import { useEffect, useState } from 'react'
 import { useFonts } from 'expo-font'
 
-// import SingleCocktail from '../components/SingleCocktail'
-import CustomText from '../components/CustomText'
 import Welcome from '../components/Welcome'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { getSingleCocktail, searchByName } from '../redux/action'
+import { searchByName } from '../redux/action'
 import SearchResults from '../components/SearchResults'
 
 const Home = () => {
@@ -20,8 +18,6 @@ const Home = () => {
   useEffect(() => {
     if (query) {
       dispatch(searchByName(query))
-    } else {
-      dispatch(getSingleCocktail())
     }
   }, [dispatch, query])
 
@@ -36,68 +32,45 @@ const Home = () => {
   if (!fontLoaded && !fontError) {
     return null
   }
+
+  const handleClear = () => {
+    setQuery('')
+  }
+
   return (
-    <View>
-      <Appbar.Header style={styles.appbar}>
-        {/* <Appbar.BackAction onPress={() => {}} /> */}
-        <Appbar.Content
-          title={
-            <CustomText style={styles.appbarTitle}>How to Cocktail</CustomText>
-          }
-        />
-        <Image
-          source={require('../assets/mint.png')}
-          style={styles.mintImage}
-          alt="glass"
-        />
-      </Appbar.Header>
+    <View style={styles.main}>
       <Text style={styles.searchbarTopText}>I want to learn...</Text>
       <Searchbar
         placeholder="Search"
         onChangeText={(text) => setQuery(text)}
         value={query}
         style={styles.searchbar}
+        onIconPress={handleClear}
       />
       <View>
-        {content && content.length > 0 ? (
+        {query === '' ? (
+          <Welcome />
+        ) : (
+          content &&
+          content.length > 0 &&
           content.map((drink, index) => (
-            <View key={drink.idDrink || index} style={{ margin: 10 }}>
+            <View key={drink.idDrink || index} style={styles.resultContainer}>
               <SearchResults drink={drink} />
-              {/* <Text>{drink.idDrink}</Text>
-              <Text>{drink.strDrink}</Text> */}
             </View>
           ))
-        ) : (
-          <Welcome />
         )}
       </View>
-      {/* <SingleCocktail /> */}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  appbar: {
+  main: {
     backgroundColor: '#FEF9E4',
   },
   searchbar: {
     marginHorizontal: 20,
     backgroundColor: 'white',
-  },
-  appbarTitle: {
-    fontFamily: 'MeowScript-Regular',
-    color: '#F66372',
-    fontSize: 40,
-    textAlign: 'center',
-    zIndex: 10,
-  },
-  mintImage: {
-    width: '150',
-    height: '140',
-    position: 'absolute',
-    right: 0,
-    top: -34,
-    zIndex: 5,
   },
   searchbarTopText: {
     fontSize: 25,
@@ -105,6 +78,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Raleway-Bold',
     marginLeft: 35,
     marginBottom: 10,
+    marginTop: 10,
+  },
+  resultContainer: {
+    margin: 10,
+    display: 'flex',
+    flexWrap: 'nowrap',
+    flexDirection: 'row',
+    // justifyContent: 'space-evenly',
   },
 })
 
