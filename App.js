@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import store from './redux/store/index.js'
 
 import Home from './screens/Home.jsx'
+import CategoryDetail from './screens/CategoryDetail.jsx'
 const CustomTitle = () => {
   return <Text style={styles.headerTitle}>How to Cocktail</Text>
 }
@@ -31,6 +32,7 @@ export default function App() {
             }}
           >
             <Stack.Screen name="How to Cocktail" component={Home} />
+            <Stack.Screen name="CategoryResults" component={CategoryDetail} />
           </Stack.Navigator>
           <Image
             source={require('./assets/mint.png')}
@@ -53,7 +55,7 @@ const styles = StyleSheet.create({
     fontFamily: 'MeowScript-Regular',
     color: '#F66372',
     fontSize: 40,
-    textAlign: 'center',
+    // textAlign: 'center',
   },
   mintImage: {
     width: '150',

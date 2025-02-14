@@ -1,15 +1,35 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from 'react-native'
 import { useEffect } from 'react'
-import { getCategories } from '../redux/action'
+import { getCategories, getDrinksByCategory } from '../redux/action'
+import { useNavigation } from '@react-navigation/native'
 
 const CategoryList = () => {
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const categories = useSelector((state) => state.cocktail.categories)
+  const drinksByCategory = useSelector(
+    (state) => state.cocktail.drinksByCategory
+  )
 
   useEffect(() => {
     dispatch(getCategories())
   }, [dispatch])
+
+  useEffect(() => {
+    if (categories.length > 0) {
+      categories.forEach((category) => {
+        dispatch(getDrinksByCategory(category.strCategory))
+      })
+    }
+  }, [dispatch, categories])
 
   const getCategoryImage = (category) => {
     switch (category) {
@@ -46,7 +66,14 @@ const CategoryList = () => {
         {categories &&
           categories.length > 0 &&
           categories.map((item, index) => (
-            <View key={index}>
+            <TouchableOpacity
+              key={index}
+              onPress={() =>
+                navigation.navigate('CategoryResults', {
+                  category: item.strCategory,
+                })
+              }
+            >
               <View style={styles.main}>
                 <View style={styles.imageBox}>
                   <Image
@@ -64,10 +91,12 @@ const CategoryList = () => {
                   </Text>
                 </View>
                 <View style={styles.numberBox}>
-                  <Text style={styles.text}>N° mixes</Text>
+                  <Text style={styles.text}>
+                    {drinksByCategory[item.strCategory]?.count || 0} mixes
+                  </Text>
                 </View>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
       </ScrollView>
     </>
