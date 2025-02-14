@@ -2,17 +2,29 @@ import { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 import Entypo from '@expo/vector-icons/Entypo'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
-
-import CategoryList from './CategoryList'
+import { useDispatch, useSelector } from 'react-redux'
+import { getSingleCocktail } from '../redux/action'
 
 const SearchResults = ({ drink }) => {
+  const dispatch = useDispatch()
+  // console.log(drink)
   const [result, setResults] = useState('')
 
   useEffect(() => {
-    setResults(drink)
+    if (drink) {
+      dispatch(getSingleCocktail(drink))
+    }
+  }, [dispatch, drink])
 
-    // console.log('result', result)
-  }, [drink])
+  const drinkDetail = useSelector(
+    (state) => state.cocktail.singleCocktail[drink]
+  )
+
+  useEffect(() => {
+    if (drinkDetail) {
+      setResults(drinkDetail)
+    }
+  }, [drinkDetail])
 
   return (
     <>

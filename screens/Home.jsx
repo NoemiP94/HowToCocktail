@@ -62,7 +62,7 @@ const Home = () => {
                     key={drink.idDrink || index}
                     style={styles.drinkContainer}
                   >
-                    <SearchResults drink={drink} />
+                    <SearchResults drink={drink.idDrink} />
                   </View>
                 ))}
             </View>

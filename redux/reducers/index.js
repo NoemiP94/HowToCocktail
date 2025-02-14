@@ -6,7 +6,7 @@ import {
 } from '../action/index'
 
 const initialState = {
-  singleCocktail: null,
+  singleCocktail: [],
   content: [],
   categories: [],
   drinksByCategory: [],
@@ -17,7 +17,10 @@ const cocktailReducer = (state = initialState, action) => {
     case GET_SINGLE_COCKTAIL:
       return {
         ...state,
-        singleCocktail: action.payload,
+        singleCocktail: {
+          ...state.singleCocktail,
+          [action.payload.idDrink]: action.payload,
+        },
       }
     case GET_SEARCH_BY_NAME:
       return {

@@ -8,6 +8,11 @@ const bigReducer = combineReducers({
 
 const store = configureStore({
   reducer: bigReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: false,
+      serializableCheck: false,
+    }),
 })
 
 export default store

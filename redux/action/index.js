@@ -3,11 +3,11 @@ export const GET_SEARCH_BY_NAME = 'GET_SEARCH_BY_NAME'
 export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const GET_DRINK_BY_CATEGORY = 'GET_DRINK_BY_CATEGORY'
 
-export const getSingleCocktail = () => {
+export const getSingleCocktail = (id) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007`, //full cocktail details by id
+        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`, //full cocktail details by id
         {
           headers: {
             Accept: 'application/json',
@@ -18,11 +18,13 @@ export const getSingleCocktail = () => {
       if (res.ok) {
         const data = await res.json()
         // console.log(data)
-        dispatch({
-          type: GET_SINGLE_COCKTAIL,
-          payload: data,
-        })
-        console.log('Load correctly')
+        if (data.drinks && data.drinks.length > 0) {
+          dispatch({
+            type: GET_SINGLE_COCKTAIL,
+            payload: data.drinks[0],
+          })
+          console.log('Load correctly')
+        }
       } else {
         throw new Error('Load is failed')
       }
