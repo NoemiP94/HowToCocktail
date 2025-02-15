@@ -9,10 +9,20 @@ const SearchResults = ({ drink }) => {
   const dispatch = useDispatch()
   // console.log(drink)
   const [result, setResults] = useState('')
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     if (drink) {
-      dispatch(getSingleCocktail(drink))
+      const fetchData = async () => {
+        try {
+          const response = await dispatch(getSingleCocktail(drink))
+          setResults(response)
+        } catch (err) {
+          console.error('Load error', err)
+          setError(err)
+        }
+      }
+      fetchData()
     }
   }, [dispatch, drink])
 
@@ -21,10 +31,14 @@ const SearchResults = ({ drink }) => {
   )
 
   useEffect(() => {
-    if (drinkDetail) {
+    if (drinkDetail && result !== drinkDetail) {
       setResults(drinkDetail)
     }
-  }, [drinkDetail])
+  }, [drinkDetail, result])
+
+  if (error) {
+    return <Text>Error: {error.message}</Text>
+  }
 
   return (
     <>

@@ -23,7 +23,7 @@ export const getSingleCocktail = (id) => {
             type: GET_SINGLE_COCKTAIL,
             payload: data.drinks[0],
           })
-          console.log('Load correctly')
+          console.log('Load correctly', data.drinks[0].idDrink)
         }
       } else {
         throw new Error('Load is failed')
