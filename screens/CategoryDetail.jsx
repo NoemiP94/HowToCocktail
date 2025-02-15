@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getDrinksByCategory } from '../redux/action'
 import { useEffect, useState } from 'react'
 import SearchResults from '../components/SearchResults'
+import CategoryList from '../components/CategoryList'
 
 const CategoryDetail = ({ route }) => {
   const dispatch = useDispatch()
@@ -77,6 +78,11 @@ const CategoryDetail = ({ route }) => {
             </TouchableOpacity>
           </View>
         )}
+        <ScrollView horizontal>
+          <View>
+            <CategoryList />
+          </View>
+        </ScrollView>
       </ScrollView>
     </View>
   )

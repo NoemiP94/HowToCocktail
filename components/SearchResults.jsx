@@ -105,12 +105,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   image: {
-    width: 150,
-    height: 150,
+    width: 120,
+    height: 120,
     borderRadius: 100,
     position: 'absolute',
     bottom: -40,
-    right: 70,
+    right: 85,
   },
   textBox: {
     display: 'flex',
