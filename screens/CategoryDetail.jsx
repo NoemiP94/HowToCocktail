@@ -1,4 +1,10 @@
-import { ScrollView, Text, View, Button, StyleSheet } from 'react-native'
+import {
+  ScrollView,
+  Text,
+  View,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { getDrinksByCategory } from '../redux/action'
 import { useEffect, useState } from 'react'
@@ -65,8 +71,10 @@ const CategoryDetail = ({ route }) => {
         ))}
 
         {drinkList && drinkList.drinks && drinkList.drinks.length > page && (
-          <View>
-            <Button title="Load More" onPress={loadMoreDrinks} />
+          <View style={styles.buttonBox}>
+            <TouchableOpacity onPress={loadMoreDrinks} style={styles.button}>
+              <Text style={styles.buttonText}>Load more...</Text>
+            </TouchableOpacity>
           </View>
         )}
       </ScrollView>
@@ -101,6 +109,19 @@ const styles = StyleSheet.create({
   },
   drinkContainer: {
     marginRight: 30,
+  },
+  buttonBox: {
+    marginVertical: 20,
+  },
+  button: {
+    backgroundColor: '#FEF9E4',
+    padding: 5,
+  },
+  buttonText: {
+    fontFamily: 'Raleway-Regular',
+    color: '#FB7D8A',
+    fontSize: 16,
+    textAlign: 'center',
   },
 })
 
