@@ -7,6 +7,8 @@ import store from './redux/store/index.js'
 
 import Home from './screens/Home.jsx'
 import CategoryDetail from './screens/CategoryDetail.jsx'
+
+import SingleCocktail from './screens/SingleCocktail.jsx'
 const CustomTitle = () => {
   return <Text style={styles.headerTitle}>How to Cocktail</Text>
 }
@@ -33,6 +35,7 @@ export default function App() {
           >
             <Stack.Screen name="How to Cocktail" component={Home} />
             <Stack.Screen name="CategoryResults" component={CategoryDetail} />
+            <Stack.Screen name="DrinkDetail" component={SingleCocktail} />
           </Stack.Navigator>
           <Image
             source={require('./assets/mint.png')}

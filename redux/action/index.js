@@ -15,19 +15,19 @@ export const getSingleCocktail = (id) => {
         }
       )
 
-      if (res.ok) {
-        const data = await res.json()
-        // console.log(data)
-        if (data.drinks && data.drinks.length > 0) {
-          dispatch({
-            type: GET_SINGLE_COCKTAIL,
-            payload: data.drinks[0],
-          })
-          console.log('Load correctly', data.drinks[0].idDrink)
-        }
-      } else {
-        throw new Error('Load is failed')
+      if (!res.ok) {
+        throw new Error('Network response was not ok')
       }
+      const data = await res.json()
+      // console.log(data)
+      if (!data.drinks || data.drinks.length === 0) {
+        throw new Error('')
+      }
+      dispatch({
+        type: GET_SINGLE_COCKTAIL,
+        payload: data.drinks[0],
+      })
+      console.log('Load correctly', data.drinks[0].idDrink)
     } catch (error) {
       console.log('error', error)
     }

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import Entypo from '@expo/vector-icons/Entypo'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
 import { getSingleCocktail } from '../redux/action'
 
 const SearchResults = ({ drink }) => {
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   // console.log(drink)
   const [result, setResults] = useState('')
   const [error, setError] = useState(null)
@@ -44,7 +46,14 @@ const SearchResults = ({ drink }) => {
     <>
       {result ? (
         <View>
-          <View key={result.idDrink} style={styles.container}>
+          <TouchableOpacity
+            key={result.idDrink}
+            style={styles.container}
+            onPress={() => {
+              navigation.navigate('DrinkDetail', { drinkId: result.idDrink })
+              console.log('cliccato')
+            }}
+          >
             <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
               {result.strDrink}
             </Text>
@@ -71,7 +80,7 @@ const SearchResults = ({ drink }) => {
               source={{ uri: result.strDrinkThumb }}
               style={styles.image}
             />
-          </View>
+          </TouchableOpacity>
         </View>
       ) : null}
     </>

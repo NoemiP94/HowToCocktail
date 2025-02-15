@@ -6,7 +6,7 @@ import {
 } from '../action/index'
 
 const initialState = {
-  singleCocktail: [],
+  singleCocktail: {},
   content: [],
   categories: [],
   drinksByCategory: [],
