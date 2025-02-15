@@ -37,7 +37,7 @@ const SearchResults = ({ drink }) => {
   }, [drinkDetail, result])
 
   if (error) {
-    return <Text>Error: {error.message}</Text>
+    return console.log('Error', error)
   }
 
   return (

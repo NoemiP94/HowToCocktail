@@ -44,9 +44,9 @@ const CategoryDetail = ({ route }) => {
       : []
 
   return (
-    <View>
-      <View>
-        <Text>{category}</Text>
+    <View style={styles.main}>
+      <View style={styles.titleBox}>
+        <Text style={styles.title}>{category}</Text>
       </View>
       <ScrollView>
         {drinkChunks.slice(0, page).map((chunk, index) => (
@@ -75,6 +75,23 @@ const CategoryDetail = ({ route }) => {
 }
 
 const styles = StyleSheet.create({
+  main: {
+    backgroundColor: '#FEF9E4',
+    width: '100%',
+    height: '100%',
+  },
+  title: {
+    textAlign: 'center',
+    fontFamily: 'Raleway-Italic-VariableFont_wght',
+    fontSize: 30,
+    paddingTop: 10,
+  },
+  titleBox: {
+    paddingBottom: 10,
+    borderBottomColor: '#FB7D8A',
+    borderBottomWidth: 1,
+    borderStyle: 'dashed',
+  },
   resultContainer: {
     marginTop: 5,
     marginLeft: 20,
