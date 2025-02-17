@@ -16,6 +16,75 @@ const SingleCocktail = ({ route }) => {
     (state) => state.cocktail.singleCocktail[drinkId]
   )
 
+  const getIngredientImage = (ingredient) => {
+    switch (ingredient) {
+      // juice
+      case 'Apple juice':
+        return require('../assets/lemon_juice.png')
+      case 'Pineapple juice':
+        return require('../assets/lemon_juice.png')
+      case 'Lemon juice':
+        return require('../assets/lemon_juice.png')
+      case 'Tomato juice':
+        return require('../assets/lemon_juice.png')
+      case 'Cranberry juice':
+        return require('../assets/lemon_juice.png')
+      case 'Grape juice':
+        return require('../assets/lemon_juice.png')
+      case 'Grapefruit juice':
+        return require('../assets/lemon_juice.png')
+      case 'Lime juice':
+        return require('../assets/lemon_juice.png')
+      //sugar
+      case 'Sugar':
+        return require('../assets/sugar.png')
+      case 'Salt':
+        return require('../assets/sugar.png')
+      //fruit
+      case 'Strawberries':
+        return require('../assets/fruit.png')
+      case 'Mango':
+        return require('../assets/fruit.png')
+      case 'Ginger':
+        return require('../assets/fruit.png')
+      case 'Lime':
+        return require('../assets/fruit.png')
+      case 'Cantaloupe':
+        return require('../assets/fruit.png')
+      case 'Berries':
+        return require('../assets/fruit.png')
+      case 'Grapes':
+        return require('../assets/fruit.png')
+      case 'Kiwi':
+        return require('../assets/fruit.png')
+      case 'Orange':
+        return require('../assets/fruit.png')
+      case 'Cranberries':
+        return require('../assets/fruit.png')
+      case 'Lemon':
+        return require('../assets/lemon_piece.png')
+      //soda
+      case 'Tea':
+        return require('../assets/soda.png')
+      case 'Carbonated water':
+        return require('../assets/soda.png')
+      case 'Sugar syrup':
+        return require('../assets/soda.png')
+      case 'Milk':
+        return require('../assets/soda.png')
+      case 'Chocolate syrup':
+        return require('../assets/soda.png')
+      case 'Yoghurt':
+        return require('../assets/soda.png')
+      case 'Water':
+        return require('../assets/soda.png')
+      case 'Ice':
+        return require('../assets/ice.png')
+      default:
+        return require('../assets/drink.png')
+    }
+  }
+
   return (
     <ScrollView>
       <View style={styles.mainBg}>
@@ -62,6 +131,10 @@ const SingleCocktail = ({ route }) => {
               <View style={styles.ingredientBox}>
                 {drinkDetail.strIngredient1 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient1)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient1}
                     </Text>
@@ -74,6 +147,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient2 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient2)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient2}
                     </Text>
@@ -86,6 +163,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient3 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient3)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient3}
                     </Text>
@@ -98,6 +179,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient4 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient4)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient4}
                     </Text>
@@ -110,6 +195,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient5 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient5)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient5}
                     </Text>
@@ -122,6 +211,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient6 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient6)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient6}
                     </Text>
@@ -134,6 +227,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient7 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient7)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient7}
                     </Text>
@@ -146,6 +243,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient8 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient8)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient8}
                     </Text>
@@ -156,8 +257,12 @@ const SingleCocktail = ({ route }) => {
                     ) : null}
                   </View>
                 ) : null}
-                {drinkDetail.strIngredient19 ? (
+                {drinkDetail.strIngredient9 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient9)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient9}
                     </Text>
@@ -170,6 +275,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient10 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient10)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient10}
                     </Text>
@@ -182,6 +291,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient11 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient11)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient11}
                     </Text>
@@ -194,6 +307,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient12 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient12)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient12}
                     </Text>
@@ -206,6 +323,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient13 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient13)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient13}
                     </Text>
@@ -218,6 +339,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient14 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient14)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient14}
                     </Text>
@@ -230,6 +355,10 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
                 {drinkDetail.strIngredient15 ? (
                   <View style={styles.singleIngredient}>
+                    <Image
+                      source={getIngredientImage(drinkDetail.strIngredient15)}
+                      style={styles.ingrImage}
+                    />
                     <Text style={styles.ingrName}>
                       {drinkDetail.strIngredient15}
                     </Text>
@@ -336,7 +465,12 @@ const styles = StyleSheet.create({
   ingrMeasure: {
     fontFamily: 'Raleway-Bold',
     color: '#FB7D8A',
-    fontSize: 24,
+    fontSize: 18,
+  },
+  ingrImage: {
+    width: 40,
+    height: 40,
+    margin: 2,
   },
 })
 
