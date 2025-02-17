@@ -371,8 +371,11 @@ const SingleCocktail = ({ route }) => {
                 ) : null}
               </View>
             </View>
-            <View>
-              <Text>Instructions: {drinkDetail.strInstructions}</Text>
+            <View style={styles.box}>
+              <Text style={styles.instructionsTitle}>Instructions &gt;</Text>
+              <Text style={styles.instructionsText}>
+                {drinkDetail.strInstructions}
+              </Text>
             </View>
           </View>
         )}
@@ -430,7 +433,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 50,
     right: -55,
-    top: 50,
+    top: 35,
   },
   ingredientTitle: {
     fontFamily: 'Raleway-Regular',
@@ -447,8 +450,8 @@ const styles = StyleSheet.create({
   },
   singleIngredient: {
     backgroundColor: '#FEF9E4',
-    width: 120,
-    height: 120,
+    width: 130,
+    height: 130,
     borderRadius: 100,
     borderColor: '#FBE897',
     borderWidth: 1,
@@ -471,6 +474,16 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     margin: 2,
+  },
+  instructionsTitle: {
+    fontFamily: 'Raleway-Regular',
+    fontSize: 24,
+    color: '#FB7D8A',
+    marginVertical: 20,
+  },
+  instructionsText: {
+    fontFamily: 'Raleway-Regular',
+    marginBottom: 40,
   },
 })
 
