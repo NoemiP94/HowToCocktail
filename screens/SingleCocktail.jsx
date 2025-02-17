@@ -66,119 +66,177 @@ const SingleCocktail = ({ route }) => {
                       {drinkDetail.strIngredient1}
                     </Text>
                     {drinkDetail.strMeasure1 ? (
-                      <Text>{drinkDetail.strMeasure1}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure1}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient2 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient2}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient2}
+                    </Text>
                     {drinkDetail.strMeasure2 ? (
-                      <Text>{drinkDetail.strMeasure2}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure2}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient3 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient3}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient3}
+                    </Text>
                     {drinkDetail.strMeasure3 ? (
-                      <Text>{drinkDetail.strMeasure3}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure3}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient4 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient4}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient4}
+                    </Text>
                     {drinkDetail.strMeasure4 ? (
-                      <Text>{drinkDetail.strMeasure4}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure4}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient5 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient5}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient5}
+                    </Text>
                     {drinkDetail.strMeasure5 ? (
-                      <Text>{drinkDetail.strMeasure5}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure5}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient6 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient6}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient6}
+                    </Text>
                     {drinkDetail.strMeasure6 ? (
-                      <Text>{drinkDetail.strMeasure6}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure6}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient7 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient7}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient7}
+                    </Text>
                     {drinkDetail.strMeasure7 ? (
-                      <Text>{drinkDetail.strMeasure7}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure7}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient8 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient8}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient8}
+                    </Text>
                     {drinkDetail.strMeasure8 ? (
-                      <Text>{drinkDetail.strMeasure8}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure8}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient19 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient9}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient9}
+                    </Text>
                     {drinkDetail.strMeasure9 ? (
-                      <Text>{drinkDetail.strMeasure9}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure9}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient10 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient10}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient10}
+                    </Text>
                     {drinkDetail.strMeasure10 ? (
-                      <Text>{drinkDetail.strMeasure10}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure10}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient11 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient11}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient11}
+                    </Text>
                     {drinkDetail.strMeasure11 ? (
-                      <Text>{drinkDetail.strMeasure11}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure11}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient12 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient12}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient12}
+                    </Text>
                     {drinkDetail.strMeasure12 ? (
-                      <Text>{drinkDetail.strMeasure12}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure12}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient13 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient13}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient13}
+                    </Text>
                     {drinkDetail.strMeasure13 ? (
-                      <Text>{drinkDetail.strMeasure13}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure13}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient14 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient14}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient14}
+                    </Text>
                     {drinkDetail.strMeasure14 ? (
-                      <Text>{drinkDetail.strMeasure14}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure14}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
                 {drinkDetail.strIngredient15 ? (
                   <View style={styles.singleIngredient}>
-                    <Text>{drinkDetail.strIngredient15}</Text>
+                    <Text style={styles.ingrName}>
+                      {drinkDetail.strIngredient15}
+                    </Text>
                     {drinkDetail.strMeasure15 ? (
-                      <Text>{drinkDetail.strMeasure15}</Text>
+                      <Text style={styles.ingrMeasure}>
+                        {drinkDetail.strMeasure15}
+                      </Text>
                     ) : null}
                   </View>
                 ) : null}
@@ -266,16 +324,19 @@ const styles = StyleSheet.create({
     borderColor: '#FBE897',
     borderWidth: 1,
     margin: 10,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   ingrName: {
     fontFamily: 'Raleway-Regular',
     color: '#1E2742',
-    fontSize: 12,
+    fontSize: 16,
   },
   ingrMeasure: {
     fontFamily: 'Raleway-Bold',
     color: '#FB7D8A',
-    fontSize: 28,
+    fontSize: 24,
   },
 })
 
