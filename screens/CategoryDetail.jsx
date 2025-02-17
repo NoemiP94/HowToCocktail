@@ -3,6 +3,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  ActivityIndicator,
   StyleSheet,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,6 +15,7 @@ import CategoryList from '../components/CategoryList'
 const CategoryDetail = ({ route }) => {
   const dispatch = useDispatch()
   const { category } = route.params
+  const [loading, setLoading] = useState(false)
 
   const [page, setPage] = useState(1)
   const [perPage, setPerPage] = useState(15)
@@ -26,7 +28,10 @@ const CategoryDetail = ({ route }) => {
   const categoryName = transformCategoryName(category)
 
   useEffect(() => {
-    dispatch(getDrinksByCategory(categoryName, page, perPage))
+    setLoading(true)
+    dispatch(getDrinksByCategory(categoryName, page, perPage)).finally(() => {
+      setLoading(false)
+    })
   }, [dispatch, categoryName, page, perPage])
 
   const drinkList = useSelector(
@@ -55,35 +60,42 @@ const CategoryDetail = ({ route }) => {
       <View style={styles.titleBox}>
         <Text style={styles.title}>{category}</Text>
       </View>
-      <ScrollView>
-        {drinkChunks.slice(0, page).map((chunk, index) => (
-          <ScrollView key={index} horizontal>
-            <View style={styles.resultContainer}>
-              {chunk.map((drink, i) => {
-                console.log(drink.idDrink)
-                return drink.idDrink ? (
-                  <View key={drink.idDrink || i} style={styles.drinkContainer}>
-                    <SearchResults drink={drink.idDrink} />
-                  </View>
-                ) : null
-              })}
+      {loading ? (
+        <ActivityIndicator size="100" color="#FB7D8A" style={styles.loader} />
+      ) : (
+        <ScrollView>
+          {drinkChunks.slice(0, page).map((chunk, index) => (
+            <ScrollView key={index} horizontal>
+              <View style={styles.resultContainer}>
+                {chunk.map((drink, i) => {
+                  console.log(drink.idDrink)
+                  return drink.idDrink ? (
+                    <View
+                      key={drink.idDrink || i}
+                      style={styles.drinkContainer}
+                    >
+                      <SearchResults drink={drink.idDrink} />
+                    </View>
+                  ) : null
+                })}
+              </View>
+            </ScrollView>
+          ))}
+
+          {drinkList && drinkList.drinks && drinkList.drinks.length > page && (
+            <View style={styles.buttonBox}>
+              <TouchableOpacity onPress={loadMoreDrinks} style={styles.button}>
+                <Text style={styles.buttonText}>Load more...</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+          <ScrollView horizontal>
+            <View>
+              <CategoryList />
             </View>
           </ScrollView>
-        ))}
-
-        {drinkList && drinkList.drinks && drinkList.drinks.length > page && (
-          <View style={styles.buttonBox}>
-            <TouchableOpacity onPress={loadMoreDrinks} style={styles.button}>
-              <Text style={styles.buttonText}>Load more...</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-        <ScrollView horizontal>
-          <View>
-            <CategoryList />
-          </View>
         </ScrollView>
-      </ScrollView>
+      )}
     </View>
   )
 }
@@ -129,6 +141,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
+  loader: { marginTop: 20 },
 })
 
 export default CategoryDetail

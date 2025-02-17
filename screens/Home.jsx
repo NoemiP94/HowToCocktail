@@ -1,4 +1,10 @@
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native'
 import { Searchbar } from 'react-native-paper'
 import { useEffect, useState } from 'react'
 import { useFonts } from 'expo-font'
@@ -13,12 +19,16 @@ import CategoryList from '../components/CategoryList'
 const Home = () => {
   const dispatch = useDispatch()
   const [query, setQuery] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const content = useSelector((state) => state.cocktail.content)
 
   useEffect(() => {
     if (query) {
-      dispatch(searchByName(query))
+      setLoading(true)
+      dispatch(searchByName(query)).finally(() => {
+        setLoading(false)
+      })
     }
   }, [dispatch, query])
 
@@ -48,8 +58,9 @@ const Home = () => {
         style={styles.searchbar}
         onIconPress={handleClear}
       />
-
-      {query === '' ? (
+      {loading ? (
+        <ActivityIndicator size="100" color="#FB7D8A" style={styles.loader} />
+      ) : query === '' ? (
         <Welcome />
       ) : (
         <View style={styles.contentBox}>
@@ -113,6 +124,7 @@ const styles = StyleSheet.create({
   categoryBox: {
     marginTop: 10,
   },
+  loader: { marginTop: 20 },
 })
 
 export default Home

@@ -6,21 +6,26 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getCategories, getDrinksByCategory } from '../redux/action'
 import { useNavigation } from '@react-navigation/native'
 
 const CategoryList = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
+  const [loading, setLoading] = useState(false)
   const categories = useSelector((state) => state.cocktail.categories)
   const drinksByCategory = useSelector(
     (state) => state.cocktail.drinksByCategory
   )
 
   useEffect(() => {
-    dispatch(getCategories())
+    setLoading(true)
+    dispatch(getCategories()).finally(() => {
+      setLoading(false)
+    })
   }, [dispatch])
 
   useEffect(() => {
@@ -62,43 +67,47 @@ const CategoryList = () => {
 
   return (
     <>
-      <ScrollView horizontal>
-        {categories &&
-          categories.length > 0 &&
-          categories.map((item, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() =>
-                navigation.navigate('CategoryResults', {
-                  category: item.strCategory,
-                })
-              }
-            >
-              <View style={styles.main}>
-                <View style={styles.imageBox}>
-                  <Image
-                    source={getCategoryImage(item.strCategory)}
-                    style={styles.image}
-                  />
+      {loading ? (
+        <ActivityIndicator size="100" color="#FB7D8A" style={styles.loader} />
+      ) : (
+        <ScrollView horizontal>
+          {categories &&
+            categories.length > 0 &&
+            categories.map((item, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() =>
+                  navigation.navigate('CategoryResults', {
+                    category: item.strCategory,
+                  })
+                }
+              >
+                <View style={styles.main}>
+                  <View style={styles.imageBox}>
+                    <Image
+                      source={getCategoryImage(item.strCategory)}
+                      style={styles.image}
+                    />
+                  </View>
+                  <View style={styles.textBox}>
+                    <Text
+                      style={styles.mainText}
+                      numberOfLines={2}
+                      ellipsizeMode="tail"
+                    >
+                      {item.strCategory}
+                    </Text>
+                  </View>
+                  <View style={styles.numberBox}>
+                    <Text style={styles.text}>
+                      {drinksByCategory[item.strCategory]?.count || 0} mixes
+                    </Text>
+                  </View>
                 </View>
-                <View style={styles.textBox}>
-                  <Text
-                    style={styles.mainText}
-                    numberOfLines={2}
-                    ellipsizeMode="tail"
-                  >
-                    {item.strCategory}
-                  </Text>
-                </View>
-                <View style={styles.numberBox}>
-                  <Text style={styles.text}>
-                    {drinksByCategory[item.strCategory]?.count || 0} mixes
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          ))}
-      </ScrollView>
+              </TouchableOpacity>
+            ))}
+        </ScrollView>
+      )}
     </>
   )
 }
@@ -143,6 +152,7 @@ const styles = StyleSheet.create({
   numberBox: {
     height: 20,
   },
+  loader: { marginTop: 20 },
 })
 
 export default CategoryList

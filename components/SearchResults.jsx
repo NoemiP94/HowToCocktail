@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native'
 import Entypo from '@expo/vector-icons/Entypo'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,16 +19,20 @@ const SearchResults = ({ drink }) => {
   // console.log(drink)
   const [result, setResults] = useState('')
   const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (drink) {
       const fetchData = async () => {
         try {
+          setLoading(true)
           const response = await dispatch(getSingleCocktail(drink))
           setResults(response)
         } catch (err) {
           console.error('Load error', err)
           setError(err)
+        } finally {
+          setLoading(false)
         }
       }
       fetchData()
@@ -44,7 +55,9 @@ const SearchResults = ({ drink }) => {
 
   return (
     <>
-      {result ? (
+      {loading ? (
+        <ActivityIndicator size="100" color="#FB7D8A" style={styles.loader} />
+      ) : result ? (
         <View>
           <TouchableOpacity
             key={result.idDrink}
@@ -130,6 +143,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginRight: 10,
   },
+  loader: { marginTop: 20 },
 })
 
 export default SearchResults
